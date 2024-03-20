@@ -25,3 +25,4 @@ namespace EntityLayer.Concrete
         public string AboutImage2 { get; set; }
     }
 }
+// denemeee
