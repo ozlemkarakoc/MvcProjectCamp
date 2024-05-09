@@ -13,6 +13,7 @@ namespace MvcProjectCamp.Controllers
         // GET: Content
 
         ContentManager cm = new ContentManager(new EfContentDal());
+ 
         public ActionResult Index()
         {
             return View();
