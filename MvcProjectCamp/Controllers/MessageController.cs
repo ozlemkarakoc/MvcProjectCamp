@@ -16,8 +16,6 @@ namespace MvcProjectCamp.Controllers
     {
         // GET: Message
 
-
-
         MessageManager mm = new MessageManager(new EfMessageDal());
         MessageValidator messageValidator = new MessageValidator();
 
