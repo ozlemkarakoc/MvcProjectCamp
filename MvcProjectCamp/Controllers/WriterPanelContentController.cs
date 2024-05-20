@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayerr.Concrete;
 using DataAccessLayerr.EntityFramework;
+using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +15,35 @@ namespace MvcProjectCamp.Controllers
         // GET: WriterPanelContent
 
         ContentManager cm = new ContentManager(new EfContentDal());
-        public ActionResult MyContent()
+        Context c = new Context();
+        public ActionResult MyContent(string p)
         {
-            var contentValues = cm.GetListByWriter();
+            p = (string)Session["WriterMail"];
+            var writeridinfo = c.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault();
+            var contentValues = cm.GetListByWriter(writeridinfo);
             return View(contentValues);
+        }
+        [HttpGet]
+        public ActionResult AddContent(int id)
+        {
+            ViewBag.d = id;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddContent(Content p)
+        {
+            string mail = (string)Session["WriterMail"];
+            var writeridinfo = c.Writers.Where(x => x.WriterMail == mail).Select(y => y.WriterID).FirstOrDefault();
+            p.ContentDate=DateTime.Parse( DateTime.Now.ToShortDateString());
+            p.WriterID = writeridinfo;
+            p.ContentStatus = true;
+            cm.ContentAdd(p);
+            return RedirectToAction("MyContent");
+        }
+        public ActionResult ToDoList()
+        {
+            return View();
         }
     }
 }

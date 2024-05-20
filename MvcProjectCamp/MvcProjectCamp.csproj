@@ -56,6 +56,12 @@
       <HintPath>..\packages\FluentValidation.11.9.0\lib\netstandard2.0\FluentValidation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -141,6 +147,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HeadingController.cs" />
@@ -2013,6 +2020,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -2505,6 +2513,48 @@
     <Content Include="login-form-20\scss\bootstrap\_utilities.scss" />
     <Content Include="login-form-20\scss\bootstrap\_variables.scss" />
     <Content Include="login-form-20\scss\style.scss" />
+    <Content Include="web\css\aos-animation.css" />
+    <Content Include="web\css\aos.css" />
+    <Content Include="web\css\bootstrap.css" />
+    <Content Include="web\css\fontawesome-all.css" />
+    <Content Include="web\css\roadmap.css" />
+    <Content Include="web\css\simpleLightbox.css" />
+    <Content Include="web\css\snow.css" />
+    <Content Include="web\css\style.css" />
+    <Content Include="web\images\banner.jpg" />
+    <Content Include="web\images\close.png" />
+    <Content Include="web\images\contact.jpg" />
+    <Content Include="web\images\exp.jpg" />
+    <Content Include="web\images\g1.jpg" />
+    <Content Include="web\images\g2.jpg" />
+    <Content Include="web\images\g3.jpg" />
+    <Content Include="web\images\g4.jpg" />
+    <Content Include="web\images\g5.jpg" />
+    <Content Include="web\images\g6.jpg" />
+    <Content Include="web\images\g7.jpg" />
+    <Content Include="web\images\g8.jpg" />
+    <Content Include="web\images\g9.jpg" />
+    <Content Include="web\images\loader.gif" />
+    <Content Include="web\images\move_up.png" />
+    <Content Include="web\images\next.png" />
+    <Content Include="web\images\prev.png" />
+    <Content Include="web\images\serve.jpg" />
+    <Content Include="web\images\stats.jpg" />
+    <Content Include="web\images\testimonials.jpg" />
+    <Content Include="web\index.html" />
+    <Content Include="web\js\aos.js" />
+    <Content Include="web\js\bootstrap.js" />
+    <Content Include="web\js\easing.js" />
+    <Content Include="web\js\jquery-2.2.3.min.js" />
+    <Content Include="web\js\jquery.countup.js" />
+    <Content Include="web\js\jquery.roadmap.js" />
+    <Content Include="web\js\jquery.waypoints.min.js" />
+    <Content Include="web\js\move-top.js" />
+    <Content Include="web\js\simpleLightbox.js" />
+    <Content Include="web\w3layouts-license.txt" />
+    <Content Include="web\webfonts\fa-brands-400.svg" />
+    <Content Include="web\webfonts\fa-regular-400.svg" />
+    <Content Include="web\webfonts\fa-solid-900.svg" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2572,6 +2622,25 @@
     <Content Include="Views\WriterPanelMessage\NewMessage.cshtml" />
     <Content Include="Views\WriterPanelContent\MyContent.cshtml" />
     <Content Include="Views\Login\WriterLogin.cshtml" />
+    <Content Include="Views\Default\Headings.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\WriterPanel\AllHeading.cshtml" />
+    <Content Include="Views\WriterPanelContent\AddContent.cshtml" />
+    <Content Include="Views\WriterPanelContent\ToDoList.cshtml" />
+    <Content Include="Views\Home\HomePage.cshtml" />
+    <Content Include="web\webfonts\fa-brands-400.eot" />
+    <Content Include="web\webfonts\fa-brands-400.ttf" />
+    <Content Include="web\webfonts\fa-brands-400.woff" />
+    <Content Include="web\webfonts\fa-brands-400.woff2" />
+    <Content Include="web\webfonts\fa-regular-400.eot" />
+    <Content Include="web\webfonts\fa-regular-400.ttf" />
+    <Content Include="web\webfonts\fa-regular-400.woff" />
+    <Content Include="web\webfonts\fa-regular-400.woff2" />
+    <Content Include="web\webfonts\fa-solid-900.eot" />
+    <Content Include="web\webfonts\fa-solid-900.ttf" />
+    <Content Include="web\webfonts\fa-solid-900.woff" />
+    <Content Include="web\webfonts\fa-solid-900.woff2" />
+    <Content Include="Views\Content\GetAllContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
