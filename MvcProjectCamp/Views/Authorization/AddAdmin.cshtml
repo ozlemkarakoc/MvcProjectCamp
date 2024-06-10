@@ -16,6 +16,7 @@
         @Html.TextBoxFor(x => x.AdminPassword, new { @class = "form-control" })
         <br />
         @Html.Label("Rolü Seçiniz")
+        @*@Html.DropDownListFor(x => x.AdminRole, (List<SelectListItem>)ViewBag.role, new { @class = "form-control" })*@
         @Html.TextBoxFor(x => x.AdminRole, new { @class = "form-control" })
         <br />
         <button class="btn btn-outline-warning">Kaydet</button>

@@ -5,7 +5,7 @@
 }
 
 <br />
-<h2>Admin Güncelleme Sayfası</h2>
+<h2 style="font-weight: bold">Admin Güncelleme Sayfası</h2>
 @using (Html.BeginForm("EditAdmin", "Authorization", FormMethod.Post))
 {
     <div class=" form-group">
@@ -16,8 +16,8 @@
         @Html.Label("Şifre")
         @Html.TextBoxFor(x => x.AdminPassword, new { @class = "form-control" })
         <br />
-        @Html.Label("Rol")
-        @Html.TextBoxFor(x => x.AdminRole, new { @class = "form-control" })
+        @Html.Label("Admin Rolü")
+        @Html.DropDownListFor(x => x.AdminRole, (List<SelectListItem>)ViewBag.role, new { @class = "form-control" })
         <br />
         <button class=" btn btn-outline-success">Güncelle</button>
     </div>

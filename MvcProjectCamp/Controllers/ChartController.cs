@@ -48,5 +48,42 @@ namespace MvcProjectCamp.Controllers
             }
 
         }
+        public ActionResult Index2()
+        {
+            return View();
+        }
+        public ActionResult WriterContentChart()
+        {
+            return Json(BlogList(), JsonRequestBehavior.AllowGet);
+
+            List<WriterContentClass> BlogList()
+            {
+                List<WriterContentClass> cat = new List<WriterContentClass>();
+                cat.Add(new WriterContentClass()
+                {
+                    WriterName = "Ahmet Yıldız",
+                    WriterContentCount = 8
+                });
+
+                cat.Add(new WriterContentClass()
+                {
+                    WriterName = "Emel Öztürk",
+                    WriterContentCount = 4
+                });
+                cat.Add(new WriterContentClass()
+                {
+                    WriterName = "Gizem Yıldız",
+                    WriterContentCount = 7
+                });
+
+                cat.Add(new WriterContentClass()
+                {
+                    WriterName = "Eda Erdem",
+                    WriterContentCount = 10
+                });
+                return cat;
+            }
+
+        }
     }
 }

@@ -4,5 +4,220 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+@*<br />
+    <h2 style="font-weight: bold">İSTATİSTİKLER</h2>
+    <br />
+    <div class="container-fluid">
+        <div class="small-box bg-danger col-lg-4 col-md-6" style="width:300px; height:200px;">
+            <div class="inner">
+                <h3>@Html.ViewBag.totalcategory</h3>
 
+                <p>Toplam Kategori</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-chart-pie"></i>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="container-fluid">
+        <div class="small-box bg-info col-lg-4 col-md-6" style="width:300px; height:200px;">
+            <div class="inner">
+                <h3>@Html.ViewBag.Sinema</h3>
+
+                <p>Sinema Kategorisindeki Başlık Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-chart-pie"></i>
+            </div>
+        </div>
+    </div>*@
+
+
+@*<!DOCTYPE html>
+    <html lang="tr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <title>İstatistikler</title>
+        <style>
+            .small-box {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 20px;
+                border-radius: 5px;
+                margin: 10px;
+            }
+
+            .icon {
+                font-size: 2em;
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <h2 style="font-weight: bold">İSTATİSTİKLER</h2>
+            <div class="d-flex justify-content-start">
+                <div class="small-box bg-danger" style="width:300px; height:200px;">
+                    <div class="inner">
+                        <h3>@Html.ViewBag.totalcategory</h3>
+                        <p>Toplam Kategori</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+                <div class="small-box bg-info" style="width:300px; height:200px;">
+                    <div class="inner">
+                        <h3>@Html.ViewBag.Sinema</h3>
+                        <p>Sinema Kategorisindeki Başlık Sayısı</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+                <div class="small-box bg-success" style="width:300px; height:200px;">
+                    <div class="inner">
+                        <h3>@Html.ViewBag.writerNameA</h3>
+                        <p>Adında "a" Harfi Geçen Yazar Sayısı</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+                <div class="small-box bg-primary" style="width:300px; height:200px;">
+                    <div class="inner">
+                        <h3>@Html.ViewBag.maxHeaderCategory</h3>
+                        <p>En Fazla Başlığa Sahip Kategori</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+                <div class="small-box bg-warning" style="width:300px; height:200px;">
+                    <div class="inner">
+                        <h3>@Html.ViewBag.differenceTrueFalse</h3>
+                        <p>Kategoriler İçinde True ile False Olanların Farkı</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>*@
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İstatistikler</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .small-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 10px;
+            color: white;
+            height:250px;
+        }
+
+        .icon {
+            font-size: 2em;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <h2 style="font-weight: bold">İSTATİSTİKLER</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>@Html.ViewBag.totalcategory</h3>
+                        <p>Toplam Kategori</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="small-box bg-dark">
+                    <div class="inner">
+                        <h3>@Html.ViewBag.totalwriter</h3>
+                        <p>Toplam Yazar</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>@Html.ViewBag.Sinema</h3>
+                        <p>Sinema Kategorisindeki Başlık Sayısı</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>@Html.ViewBag.writerNameA</h3>
+                        <p>Adında "a" Harfi Geçen Yazar Sayısı</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="small-box bg-primary">
+                    <div class="inner">
+                        <h3>@Html.ViewBag.maxHeaderCategory</h3>
+                        <p>En Fazla Başlığa Sahip Kategori</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>@Html.ViewBag.differenceTrueFalse</h3>
+                        <p>Kategoriler İçinde True ile False Olanların Farkı</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace MvcProjectCamp.Controllers
 {
@@ -36,14 +37,40 @@ namespace MvcProjectCamp.Controllers
         [HttpGet]
         public ActionResult EditAdmin(int id)
         {
+            List<SelectListItem> role = (from x in adm.GetList()
+                                         select new SelectListItem
+                                         {
+                                             Text = x.AdminRole,
+                                             Value = x.AdminRole
+                                         }).ToList();
+            ViewBag.role = role;
             var adminvalue = adm.GetByID(id);
             return View(adminvalue);
         }
         [HttpPost]
         public ActionResult EditAdmin(Admin p)
         {
+            p.AdminStatus = true;
             adm.AdminUpdate(p);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteAdmin(int id)
+        {
+            var values = adm.GetByID(id);
+            if (values.AdminStatus == true)
+            {
+                values.AdminStatus = false;
+            }
+            else if (values.AdminStatus == false)
+            {
+                values.AdminStatus = true;
+            }
+
+            adm.AdminUpdate(values);
+
+            return RedirectToAction("Index");
+
         }
     }
 }

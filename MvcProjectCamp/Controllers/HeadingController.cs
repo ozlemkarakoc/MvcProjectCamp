@@ -1,9 +1,16 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayerr.EntityFramework;
 using EntityLayer.Concrete;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Calendar.v3;
+using Google.Apis.Calendar.v3.Data;
+using Google.Apis.Services;
+using Google.Apis.Util.Store;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -21,6 +28,7 @@ namespace MvcProjectCamp.Controllers
             var headingValues = hm.GetList();
             return View(headingValues);
         }
+
         public ActionResult HeadingReport()
         {
             var headingValues = hm.GetList();

@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Result Visualization</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                url: '@Url.Action("WriterContentChart", "Chart")',
+                success: function (result) {
+                    google.charts.load('current', {
+                        'packages': ['corechart']
+                    });
+                    google.charts.setOnLoadCallback(function () {
+                        drawChart(result);
+                    });
+                }
+            });
+        });
+
+        function drawChart(result) {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'WriterName');
+            data.addColumn('number', 'WriterContentCount');
+            var dataArray = [];
+
+            $.each(result, function (i, obj) {
+                dataArray.push([obj.WriterName, obj.WriterContentCount]);
+            });
+            data.addRows(dataArray);
+
+            var colors = generateColors(dataArray.length);
+
+            var columnChartOptions = {
+                title: "Yazar - İçerik Grafiği",
+                width: 1000,
+                height: 800,
+                bar: { groupWidth: "20%" },
+                hAxis: {
+                    title: 'Yazar Adı',
+                },
+                vAxis: {
+                    title: 'İçerik Sayısı',
+                },
+                colors: colors
+            };
+
+            var columnChart = new google.visualization.ColumnChart(document.getElementById('Columnchart_div'));
+
+            columnChart.draw(data, columnChartOptions);
+        }
+
+        function generateColors(count) {
+            var colors = [];
+            for (var i = 0; i < count; i++) {
+                colors.push(getRandomColor());
+            }
+            return colors;
+        }
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</head>
+<body>
+    <div id="Columnchart_div"></div>
+</body>
+</html>
+
+
