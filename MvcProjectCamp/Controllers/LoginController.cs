@@ -18,7 +18,7 @@ namespace MvcProjectCamp.Controllers
     {
         WriterLoginManager wm = new WriterLoginManager(new EfWriterDal());
 
-        private const string RecaptchaSecretKey = "6LfB6-cpAAAAANy1_Mg_bi5S1fA_aiVfRXl4DOYx";
+        private const string RecaptchaSecretKey = "6LcYu0MqAAAAAEonYZTFBZy1sVyrKlYAu2UOAolq";
 
         // GET: Login
         [HttpGet]
