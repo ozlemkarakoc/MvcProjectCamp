@@ -24,7 +24,7 @@ Ekşi sözlük referans alınarak geliştirilen bir uygulamadır. Uygulama içer
 * IFrame
 * 404 Error Page
 
-## Vtrin Pages
+## Vitrin Pages
 
 ![301](https://github.com/user-attachments/assets/2efa4159-0924-49ce-8039-60830a68858e)
 ![302](https://github.com/user-attachments/assets/ee7bc75d-5828-495d-a96a-14f241334bf0)
