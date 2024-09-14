@@ -1,4 +1,5 @@
-﻿@model EntityLayer.Concrete.Category
+﻿
+@model EntityLayer.Concrete.Category
 @{
     ViewBag.Title = "AddCategory";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -6,18 +7,75 @@
 
 <h1>Yeni Kategori Ekleme Sayfası</h1>
 <br />
-@using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post))
+@using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post, new { id = "addCategoryForm" }))
 {
-    <div class=" form-group">
+    <div class="form-group">
         @Html.Label("Kategori Adı:")
-        @Html.TextBoxFor(x => x.CategoryName, new{@class="form-control" })
+        @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.CategoryName)
         <br /><br />
         @Html.Label("Açıklamayı Yazınız")
         @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.CategoryDescription)
         <br /><br />
-        <button class="btn btn-outline-warning">Kaydet</button>
+        <button type="submit" class="btn btn-outline-warning">Kaydet</button>
     </div>
 }
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#addCategoryForm').submit(function (event) {
+            event.preventDefault(); // Formun normalde gönderilmesini engelle
+
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function (response) {
+                    swal("Tebrikler!", "Başarılı bir şekilde eklendi!", "success")
+                        .then(() => {
+                            // Gerekirse formu yeniden yönlendirebilirsiniz
+                            window.location.reload();
+                        });
+                },
+                error: function (response) {
+                    swal("Hata!", "Bir hata oluştu. Lütfen tekrar deneyin.", "error");
+                }
+            });
+        });
+    });
+</script>
+
+
+@*
+    @{
+        ViewBag.Title = "AddCategory";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+
+    <h1>Yeni Kategori Ekleme Sayfası</h1>
+    <br />
+    @using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post))
+    {
+        <div class=" form-group">
+            @Html.Label("Kategori Adı:")
+            @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CategoryName)
+            <br /><br />
+            @Html.Label("Açıklamayı Yazınız")
+            @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CategoryDescription)
+            <br /><br />
+            <button class="btn btn-outline-warning" id="kaydet">Kaydet</button>
+        </div>
+    }
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+        $('#kaydet').click(function () {
+            swal("Tebrikler!", "Başarılı bir şekilde eklendi!", "success");
+        });
+    </script>*@

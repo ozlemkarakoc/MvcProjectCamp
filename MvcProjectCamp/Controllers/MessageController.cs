@@ -33,6 +33,8 @@ namespace MvcProjectCamp.Controllers
         public ActionResult GetInboxMessageDetails(int id)
         {
             var values = mm.GetByID(id);
+            values.IsRead = true;
+            mm.MessageUpdate(values);
             return View(values);
         }
 

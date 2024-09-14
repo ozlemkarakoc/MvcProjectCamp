@@ -16,14 +16,17 @@ namespace MvcProjectCamp.Controllers
     {
 
         MessageManager mm = new MessageManager(new EfMessageDal());
+        WriterManager wm = new WriterManager(new EfWriterDal());
         MessageValidator messageValidator = new MessageValidator();
 
         [Authorize]
         public ActionResult Inbox()
         {
             string p = (string)Session["WriterMail"];
-            var messagelist = mm.GetListInbox(p);
-            return View(messagelist);
+            var writermailinfo = wm.GetList().Where(x => x.WriterMail == p).Select(x => x.WriterMail).FirstOrDefault();
+            var values = mm.GetListInbox(writermailinfo).OrderByDescending(x => x.MessageID).Where(x => x.ReceiverMail == writermailinfo).ToList();
+            //var messagelist = mm.GetListInbox(p);
+            return View(values);
         }
         public ActionResult SendBox()
         {
@@ -33,6 +36,41 @@ namespace MvcProjectCamp.Controllers
         }
         public PartialViewResult MessageListMenu()
         {
+            //string p = (string)Session["WriterMail"];
+            //var writermailinfo = wm.GetList().Where(x => x.WriterMail == p).Select(x => x.WriterMail).FirstOrDefault();
+            //ViewBag.inboxnumber = mm.GetListInbox().Where(x => x.ReceiverMail == writermailinfo).Count(x => x.IsRead == false);
+            //return PartialView();
+
+
+            string p = (string)Session["WriterMail"];
+            if (p == null)
+            {
+
+                ViewBag.inboxnumber = 0;
+                return PartialView();
+            }
+
+            var writermailinfo = wm.GetList().FirstOrDefault(x => x.WriterMail == p)?.WriterMail;
+            if (writermailinfo == null)
+            {
+
+                ViewBag.inboxnumber = 0;
+                return PartialView();
+            }
+
+
+            var messages = mm.GetListInbox(writermailinfo);
+            int unreadMessagesCount = messages.Count(x => !x.IsRead);
+
+            System.Diagnostics.Debug.WriteLine($"WriterMail: {writermailinfo}");
+            System.Diagnostics.Debug.WriteLine($"Total Messages Count: {messages.Count}");
+            foreach (var message in messages)
+            {
+                System.Diagnostics.Debug.WriteLine($"Message ID: {message.MessageID}, IsRead: {message.IsRead}, ReceiverMail: {message.ReceiverMail}");
+            }
+            System.Diagnostics.Debug.WriteLine($"Unread Messages Count: {unreadMessagesCount}");
+
+            ViewBag.inboxnumber = unreadMessagesCount;
             return PartialView();
         }
         public ActionResult GetInboxMessageDetails(int id)

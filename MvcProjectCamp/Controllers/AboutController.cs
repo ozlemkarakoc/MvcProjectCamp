@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace MvcProjectCamp.Controllers
 {
     public class AboutController : Controller
@@ -34,6 +35,11 @@ namespace MvcProjectCamp.Controllers
         public PartialViewResult AboutPartial()
         {
             return PartialView();
+        }
+        public ActionResult DeleteAbout(int id)
+        {
+         
+            return RedirectToAction("Index");
         }
     }
 }

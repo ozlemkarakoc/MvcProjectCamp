@@ -3,24 +3,59 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    string status = "";
+    string buttonname = "";
+    string buttoncolor = "";
+    string colour = "";
 }
 
 <h2>Hakkımda Veri Listesi</h2>
 <table class="table table-bordered">
     <tr>
-        <th>ID</th>
-        <th>Hakkımda Başlık</th>
-        <th>Aktif Yap</th>
-        <th>Pasif Yap</th>
+        <th>#</th>
+        <th>Açıklama 1</th>
+        <th>Açıklama 2</th>
+        <th>Görsel 1</th>
+        <th>Görsel 2</th>
+        <th>Durum</th>
+        <th>Düzenle</th>
+        <th>İşlem</th>
     </tr>
-    @foreach(var item in Model)
-            {
-                <tr>
-                    <td>@item.AboutID</td>
-                    <td>Başlık</td>
-                    <td><a href="#" class="btn btn-warning">Aktif Yap</a></td>
-                    <td><a href="#" class="btn btn-danger">Pasif Yap</a></td>
-                </tr>
-            }
+    @foreach (var item in Model)
+    {
+        if (item.AboutStatus == false) { status = "Pasif"; }
+        if (item.AboutStatus == true) { status = "Aktif"; }
+        if (item.AboutStatus == false) { buttoncolor = "success"; }
+        if (item.AboutStatus == true) { buttoncolor = "danger"; }
+        if (item.AboutStatus == false) { buttonname = "Aktif Yap"; }
+        if (item.AboutStatus == true) { buttonname = "Pasif Yap"; }
+        if (item.AboutStatus == false) { colour = "Danger"; }
+        if (item.AboutStatus == true) { colour = "Success"; }
+
+        <tr>
+            <td>@item.AboutID</td>
+            <td>@item.AboutDetails1</td>
+            <td>@item.AboutDetails2</td>
+            <td>@item.AboutImage1</td>
+            <td>@item.AboutImage2</td>
+            <td class="project-state">
+                <span class="badge badge-@colour">@status</span>
+            </td>
+            <td>
+                <a href="/About/UpdateAbout/@item.AboutID" class="btn btn-info">
+                    <i class="fas fa-pencil-alt">
+                    </i>Düzenle
+                </a>
+            </td>
+            <td>
+                <a href="/About/DeleteAbout/@item.AboutID" class="btn btn-@buttoncolor">
+                    <i class="fas fa-arrow-alt-circle-left">
+                    </i>@buttonname
+                </a>
+            </td>
+        </tr>
+    }
 </table>
+
 @Html.Action("AboutPartial", "About")

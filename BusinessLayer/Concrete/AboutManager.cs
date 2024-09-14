@@ -32,7 +32,6 @@ namespace BusinessLayer.Concrete
         {
             _aboutDal.Update(about);
         }
-
         public List<About> GetList()
         {
             return _aboutDal.List();

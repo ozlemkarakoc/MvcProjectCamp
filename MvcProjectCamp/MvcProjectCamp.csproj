@@ -2654,6 +2654,7 @@
     <Content Include="web\images\g7.jpg" />
     <Content Include="web\images\g8.jpg" />
     <Content Include="web\images\g9.jpg" />
+    <Content Include="web\images\image.jpg" />
     <Content Include="web\images\loader.gif" />
     <Content Include="web\images\move_up.png" />
     <Content Include="web\images\next.png" />

@@ -39,6 +39,7 @@ namespace MvcProjectCamp.Controllers
             }
             else
             {
+                ViewBag.error = "Kullanıcı Adınız veya Şifreniz Hatalı, Tekrar Deneyin.";
                 return RedirectToAction("Index");
             }
         }
